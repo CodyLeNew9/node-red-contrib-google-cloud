@@ -109,6 +109,8 @@ module.exports = function(RED) {
             } else if (contentType_options !== "") {
                 writeStreamOptions.contentType = contentType_options;
             }
+            // Added this to fix “invalid upload request” error. Bad request
+            writeStreamOptions.resumable = false
 
             const writeStream = file.createWriteStream(writeStreamOptions); // Create a write stream to the file.
 
